@@ -18,8 +18,6 @@ test("should change Arabic numbers to Persian", () => {
   ).toBe("۱۲۳۴۵۶۷۸۹۰");
 });
 
-
-
 //currency
 test("should Convert  numbers to currency persian", () => {
   expect(
@@ -64,4 +62,13 @@ test("should Convert Persian and Arabic numbers to English", () => {
       .englishNumber()
       .toString(),
   ).toBe("12345678901234567890");
+});
+
+//convert to secure
+test("should convert to secure", () => {
+  expect(
+    starkString("48.39 d")
+      .security()
+      .toString(),
+  ).toBe("*******");
 });

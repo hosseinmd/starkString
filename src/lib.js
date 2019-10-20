@@ -403,6 +403,15 @@ function currency(value) {
     .replace(/\.$/, ".00");
 }
 
+/**
+ * convert any char to star ("*")
+ * @param {string} value
+ * @return {string}
+ */
+function security(value) {
+  return "*".repeat(value.length);
+}
+
 //Expose StarkString
 //CommonJS module is defined
 module.exports = {
@@ -417,4 +426,5 @@ module.exports = {
   isInteger,
   isValidBankCard,
   currency,
+  security
 };

@@ -10,6 +10,7 @@
   isValidBankCard,
   isInteger,
   currency,
+  security,
 } = require("./lib");
 
 /**
@@ -160,6 +161,15 @@ class StarkString {
    */
   currency() {
     this._value = currency(this._value);
+    return this;
+  }
+
+  /**
+   * convert any char to star ("*")
+   * @return {StarkString} StarkString object
+   */
+  security() {
+    this._value = security(this._value);
     return this;
   }
 
