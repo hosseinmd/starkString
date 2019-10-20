@@ -1,0 +1,37 @@
+{
+    "name": "persianstring",
+    "version": "0.0.1",
+    "description": "Persian language localization.",
+    "homepage": "http://github.com/hosseinmd/starkString",
+    "author": "Hossein Mohammadi <hosseinm.developer@gmail.com> ",
+    "contributors": [],
+    "keywords": [
+        "persian",
+        "farsi",
+        "arabic",
+        "english",
+        "culture",
+        "localization",
+        "i18n",
+        "l10n"
+    ],
+    "main": "src/index",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hosseinmd/starkString.git"
+    },
+    "bugs": {
+        "url": "https://github.com/hosseinmd/starkString/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT"
+        }
+    ],
+    "devDependencies": {
+        "jest": "^24.7.1"
+    },
+    "scripts": {
+        "test": "jest"
+    }
+}

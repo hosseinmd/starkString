@@ -1,0 +1,4 @@
+.prettierrc
+.gitattributes
+.gitignore
+__tests__/
