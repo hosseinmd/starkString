@@ -85,6 +85,38 @@ Example:
 starkString("آمده ای ولی من رفته ام و می آییم").halfSpace().toString(); //returns: آمده‌ای ولی من رفته‌ام و می‌آییم
 ```
 
+### 10) Integer number validation
+----------
+Whether is value integer
+
+Example:
+```javascript
+starkString("344327905").isInteger() // return true
+
+starkString("34432.7905").isInteger() // return false
+starkString("g344327905").isInteger() // return false
+```
+
+### 11) back card number validation
+----------
+Whether is value back card
+
+Example:
+```javascript
+starkString("6104337638408961").isValidBankCard() // return true
+```
+
+### 12) convert number to currency format
+----------
+Whether is value back card
+
+Example:
+```javascript
+starkString("120000.00").currency().toString() // return 120,000.00
+
+starkString("120000").currency().persianNumber().toString() // return ۱۲۰,۰۰۰
+```
+
 ### Chainable using
 ----------
 You can use all of the functions together with one StarkString instance (in v0.3).

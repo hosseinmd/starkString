@@ -8,6 +8,7 @@
   digitsToWords,
   halfSpace,
   isValidBankCard,
+  isInteger,
   currency,
 } = require("./lib");
 
@@ -138,8 +139,15 @@ class StarkString {
   }
 
   /**
+   * Return true if value is Integer
+   * @return {boolean}
+   */
+  isInteger() {
+    return isInteger(this._value);
+  }
+
+  /**
    * Used for validation back card number
-   * @param {string} value 16 digit
    * @return {boolean}
    */
   isValidBankCard() {

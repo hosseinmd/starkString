@@ -348,7 +348,7 @@ function halfSpace(value) {
  * @param {string} value
  * @return {boolean}
  */
-function isInterger(value) {
+function isInteger(value) {
   return /^\d+$/.test(value);
 }
 
@@ -359,7 +359,7 @@ function isInterger(value) {
  */
 function isValidBankCard(value) {
   // accept only digits, dashes or spaces
-  if (!isInterger(value)) return false;
+  if (!isInteger(value)) return false;
 
   // The Luhn Algorithm. It's so pretty.
   let nCheck = 0,
@@ -414,6 +414,7 @@ module.exports = {
   switchKey,
   digitsToWords,
   halfSpace,
+  isInteger,
   isValidBankCard,
   currency,
 };
