@@ -11,6 +11,7 @@
   isInteger,
   currency,
   security,
+  parseNumber,
 } = require("./lib");
 
 /**
@@ -161,6 +162,15 @@ class StarkString {
    */
   currency() {
     this._value = currency(this._value);
+    return this;
+  }
+
+  /**
+   * Remove anything expect numbers
+   * @return {StarkString} StarkString object
+   */
+  parseNumber() {
+    this._value = parseNumber(this._value);
     return this;
   }
 

@@ -72,3 +72,12 @@ test("should convert to secure", () => {
       .toString(),
   ).toBe("*******");
 });
+
+//parse number
+test("keep number", () => {
+  expect(
+    starkString("48g39 d")
+      .parseNumber()
+      .toString(),
+  ).toBe("4839");
+});

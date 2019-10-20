@@ -344,6 +344,15 @@ function halfSpace(value) {
 }
 
 /**
+ * Remove anything expect numbers
+ * @param {String} value
+ * @return {string}
+ */
+function parseNumber(string) {
+  return englishNumber(string).replace(/\D/g, "");
+}
+
+/**
  * Used for validation integer number
  * @param {string} value
  * @return {boolean}
@@ -426,5 +435,6 @@ module.exports = {
   isInteger,
   isValidBankCard,
   currency,
-  security
+  security,
+  parseNumber,
 };
