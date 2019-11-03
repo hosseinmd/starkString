@@ -1,9 +1,9 @@
-[![NPM](https://nodei.co/npm/starkString.png)](https://nodei.co/npm/starkString/)
+[![NPM](https://nodei.co/npm/starkstring.png)](https://nodei.co/npm/starkstring/)
 
-[![install size](https://packagephobia.now.sh/badge?p=starkString)](https://packagephobia.now.sh/result?p=starkString) [![dependencies](https://david-dm.org/hosseinmd/starkString.svg)](https://david-dm.org/hosseinmd/starkString.svg)
+[![install size](https://packagephobia.now.sh/badge?p=starkstring)](https://packagephobia.now.sh/result?p=starkstring) [![dependencies](https://david-dm.org/hosseinmd/starkstring.svg)](https://david-dm.org/hosseinmd/starkstring.svg)
 
 
-# [starkString](http://github.com/hosseinmd/starkString)
+# [starkstring](http://github.com/hosseinmd/starkString)
 A simple JavaScript library To use the most commonly used string operations.  
 Include functions of `persian.js`
 
