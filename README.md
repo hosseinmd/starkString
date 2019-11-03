@@ -15,7 +15,7 @@ Include functions of `persian.js`
 
 
 ## install
-`$ yarn add starkString`
+`$ yarn add starkstring`
 
 ## Functions
 
