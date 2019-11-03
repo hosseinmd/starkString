@@ -1,7 +1,11 @@
+[![NPM](https://nodei.co/npm/starkString.png)](https://nodei.co/npm/starkString/)
+
+[![install size](https://packagephobia.now.sh/badge?p=starkString)](https://packagephobia.now.sh/result?p=starkString) [![dependencies](https://david-dm.org/hosseinmd/starkString.svg)](https://david-dm.org/hosseinmd/starkString.svg)
+
+
 # [starkString](http://github.com/hosseinmd/starkString)
 A simple JavaScript library To use the most commonly used string operations.  
 Include functions of `persian.js`
-[![Build Status](https://travis-ci.org/hosseinmd/starkString.svg?branch=master)](https://travis-ci.org/hosseinmd/starkString)
 
 ## TOC
 
