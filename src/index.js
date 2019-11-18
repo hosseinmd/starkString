@@ -17,19 +17,23 @@ const NativeString = require("./NativeString");
 
 /**
  * StarkString constructor
- *
+ * @param {string | number | (string | number)[]} value
  * @returns {StarkString}
  */
-function starkString(inputStr) {
-  if (!inputStr || inputStr === "") {
-    throw new Error("Input is null or empty.");
-  }
-  return new StarkString(inputStr);
+function starkString(value) {
+  if (typeof value == "number" || typeof value == "string")
+    value = String(value);
+  else if (Array.isArray(value)) value = value.join("");
+  else
+    throw new Error(
+      `StarkString value must be type of string, number or Array<string|number> insteade of ${typeof value}`,
+    );
+
+  return new StarkString(value);
 }
 
 /**
- * StarkString main class
- *
+ * @typedef {StarkString}
  * @class StarkString
  */
 class StarkString extends NativeString {
