@@ -154,7 +154,7 @@ starkString("password").security().toString() // return ********
 
 ### Chainable using
 
-You can use all of the functions together with one StarkString instance (in v0.3).
+You can use all of the functions together with one StarkString instance.
 
 Example:
 ```javascript
