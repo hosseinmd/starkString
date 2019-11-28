@@ -106,9 +106,9 @@ starkString("g344327905").isInteger() // return false
 ```
 ----------
 
-### 11) back card number validation
+### 11) bank card number validation
 
-Whether is value back card
+Whether is value bank card
 
 Example:
 ```javascript
@@ -118,7 +118,7 @@ starkString("6104337638408961").isValidBankCard() // return true
 
 ### 12) convert number to currency format
 
-Whether is value back card
+convert english number to currency format
 
 Example:
 ```javascript

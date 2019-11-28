@@ -391,7 +391,7 @@ function isValidBankCard(value) {
 }
 
 /**
- * Used for convert to price mode
+ * Used for convert english number to currency mode
  * @param {string} value
  * @return {boolean}
  */
