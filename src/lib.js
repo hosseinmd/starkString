@@ -10,7 +10,7 @@ const regExpArabicNumber = new RegExp(/[\u0660-\u0669]/, "g"),
  */
 function persianChar(value) {
   if (!value) {
-    return;
+    return "";
   }
   const arabicChars = [
       "ي",
@@ -60,9 +60,8 @@ function englishNumber(value) {
  */
 function persianNumber(value) {
   if (!value) {
-    return;
+    return "";
   }
-  value = value.toString();
 
   return value
     .replace(regExpArabicNumber, function(c) {
@@ -81,7 +80,7 @@ function persianNumber(value) {
  */
 function arabicNumber(value) {
   if (!value) {
-    return;
+    return "";
   }
   value = value.toString();
 
@@ -102,7 +101,7 @@ function arabicNumber(value) {
  */
 function decodeURL(value) {
   if (!value) {
-    return;
+    return "";
   }
   // Replace every %20 with _ to protect them from decodeURI
   let old = "";
@@ -130,7 +129,7 @@ function decodeURL(value) {
  */
 function switchKey(value) {
   if (!value) {
-    return;
+    return "";
   }
   const persianChar = [
       "ض",
@@ -329,7 +328,7 @@ function digitsToWords(value) {
  */
 function halfSpace(value) {
   if (!value) {
-    return;
+    return "";
   }
 
   // Replace Zero-width non-joiner between persian MI.
@@ -396,7 +395,8 @@ function isValidBankCard(value) {
  * @return {boolean}
  */
 function currency(value) {
-  value = value;
+  if (!value) return "";
+
   return value
     .replace(/[^\d\.\-]/g, "")
     .replace(/(\.\d{2})[\W\w]+/g, "$1")
