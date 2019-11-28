@@ -1,7 +1,11 @@
-# [starkString](http://github.com/hosseinmd/starkString)
+[![NPM](https://nodei.co/npm/starkstring.png)](https://nodei.co/npm/starkstring/)
+
+[![install size](https://packagephobia.now.sh/badge?p=starkstring)](https://packagephobia.now.sh/result?p=starkstring) [![dependencies](https://david-dm.org/hosseinmd/starkstring.svg)](https://david-dm.org/hosseinmd/starkstring.svg)
+
+
+# [starkstring](http://github.com/hosseinmd/starkString)
 A simple JavaScript library To use the most commonly used string operations.  
 Include functions of `persian.js`
-[![Build Status](https://travis-ci.org/hosseinmd/starkString.svg?branch=master)](https://travis-ci.org/hosseinmd/starkString)
 
 ## TOC
 
@@ -11,7 +15,7 @@ Include functions of `persian.js`
 
 
 ## install
-`$ yarn add starkString`
+`$ yarn add starkstring`
 
 ## Functions
 
@@ -150,7 +154,7 @@ starkString("password").security().toString() // return ********
 
 ### Chainable using
 
-You can use all of the functions together with one StarkString instance (in v0.3).
+You can use all of the functions together with one StarkString instance.
 
 Example:
 ```javascript
