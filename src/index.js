@@ -26,7 +26,7 @@ function starkString(value) {
   else if (Array.isArray(value)) value = value.join("");
   else
     throw new Error(
-      `StarkString value must be type of string, number or Array<string|number> insteade of ${typeof value}`,
+      `StarkString value must be type of string, number or Array<string|number> instead of ${typeof value}`,
     );
 
   return new StarkString(value);
@@ -100,7 +100,7 @@ class StarkString extends NativeString {
   }
 
   /**
-   * Used for decode Persian Charachters in URL
+   * Used for decode Persian Characters in URL
    * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
    * @return {StarkString} StarkString Object
    */
@@ -110,7 +110,7 @@ class StarkString extends NativeString {
   }
 
   /**
-   * Used for decode Persian Charachters in URL
+   * Used for decode Persian Characters in URL
    * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
    * @return {StarkString} StarkString Object
    */

@@ -94,7 +94,7 @@ function arabicNumber(value) {
 }
 
 /**
- * Used for decode Persian Charachters in URL
+ * Used for decode Persian Characters in URL
  * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
  * @param {String} value
  * @return {string}
@@ -335,7 +335,7 @@ function halfSpace(value) {
   let pattern = /((\s\u0645\u06CC)+( )+([\u0600-\u06EF]{1,}){1,})/g;
   value = value.replace(new RegExp(pattern), "$2\u200C$4");
 
-  // Replace Zero-width non-joiner between perisan De-Yii.
+  // Replace Zero-width non-joiner between persian De-Yii.
   pattern = /(([\u0600-\u06EF]{1,})+( )+(ای|ایی|اند|ایم|اید|ام){1})/g;
   value = value.replace(new RegExp(pattern), "$2\u200C$4");
 
