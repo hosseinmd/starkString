@@ -24,6 +24,7 @@ function starkString(value) {
   if (typeof value == "number" || typeof value == "string")
     value = String(value);
   else if (Array.isArray(value)) value = value.join("");
+  else if (value === undefined || value === null) value = "";
   else
     throw new Error(
       `StarkString value must be type of string, number or Array<string|number> instead of ${typeof value}`,

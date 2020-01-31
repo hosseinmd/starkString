@@ -1,6 +1,6 @@
 {
     "name": "starkstring",
-    "version": "0.1.3",
+    "version": "0.2.1",
     "description": "Persian language localization.",
     "homepage": "http://github.com/hosseinmd/starkString",
     "author": "Hossein Mohammadi <hosseinm.developer@gmail.com> ",
@@ -16,6 +16,7 @@
         "l10n"
     ],
     "main": "src/index",
+    "type": "index.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/hosseinmd/starkString.git"

@@ -1,6 +1,11 @@
 /**
  * @typedef {import("./index").StarkString} StarkString
  */
+
+/**
+ * @typedef {NativeString}
+ * @class
+ */
 class NativeString {
   /**
    * Returns the character at the specified index.
