@@ -17,6 +17,14 @@ Include functions of `persian.js`
 
 `$ yarn add starkstring`
 
+```js
+const starkString = require("starkstring");
+
+//or
+
+import starkString from "starkstring";
+```
+
 ## Functions
 
 ### 1) Convert Arabic characters to Persian
