@@ -1,4 +1,6 @@
 .prettierrc
 .gitattributes
 .gitignore
+.vscode/
+node_modules/
 __tests__/
