@@ -16,6 +16,10 @@
 const NativeString = require("./NativeString");
 
 /**
+ * @typedef {import("./NativeString").NativeString} NativeString
+ */
+
+/**
  * StarkString constructor
  * @param {string | number | (string | number)[]} value
  * @returns {StarkString}
@@ -34,8 +38,8 @@ function starkString(value) {
 }
 
 /**
- * @typedef {StarkString}
- * @class StarkString
+ * @typedef {StarkString & NativeString}
+ * @class 
  */
 class StarkString extends NativeString {
   constructor(value) {
