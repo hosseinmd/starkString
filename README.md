@@ -35,9 +35,9 @@ Example:
 
 ```javascript
 starkString(" علي ")
-  .trim()
-  .persianChar()
-  .toString(); //returns: علی
+  .trim() // Remove spaces
+  .persianChar() // Convert arabic `ي` to persian `ی`
+  .toString(); //Returns: "علی"
 ```
 
 ---
