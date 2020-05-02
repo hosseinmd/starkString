@@ -1,5 +1,5 @@
 /**
- * @typedef {import("./index").StarkString} StarkString
+ * @typedef {import("./index").StarkString} StarkStringType
  */
 
 /**
@@ -10,7 +10,7 @@ class NativeString {
   /**
    * Returns the character at the specified index.
    * @param {number} pos The zero-based index of the desired character.
-   * @return {StarkString}
+   * @return {StarkStringType & NativeString}
    */
   charAt(pos) {
     this._value = this._value.charAt(pos);
@@ -42,7 +42,7 @@ class NativeString {
   /**
    * Returns a string that contains the concatenation of two or more strings.
    * @param {string[]} strings The strings to append to the end of the string.
-   * @return {StarkString}
+   * @return {StarkStringType & NativeString}
    */
   concat(...strings) {
     this._value = this._value.concat(...strings);
@@ -125,7 +125,7 @@ class NativeString {
    * named by form as specified in Unicode Standard Annex #15, Unicode Normalization Forms.
    * @param {"NFC" | "NFD" | "NFKC" | "NFKD"} form Applicable values: "NFC", "NFD", "NFKC", or "NFKD", If not specified default
    * is "NFC"
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   normalize(form) {
     this._value = this._value.normalize(form);
@@ -142,7 +142,7 @@ class NativeString {
    * @param {string} [fillString] The string to pad the current string with.
    *        If this string is too long, it will be truncated and the left-most part will be applied.
    *        The default value for this parameter is " " (U+0020).
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   padEnd(maxLength, fillString) {
     this._value = this._value.padEnd(maxLength, fillString);
@@ -159,7 +159,7 @@ class NativeString {
    * @param {string} [fillString] The string to pad the current string with.
    *        If this string is too long, it will be truncated and the left-most part will be applied.
    *        The default value for this parameter is " " (U+0020).
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   padStart(maxLength, fillString) {
     this._value = this._value.padStart(maxLength, fillString);
@@ -170,7 +170,7 @@ class NativeString {
    * Returns a String value that is made from count copies appended together. If count is 0,
    * the empty string is returned.
    * @param {number} count number of copies to append
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   repeat(count) {
     this._value = this._value.repeat(count);
@@ -181,7 +181,7 @@ class NativeString {
    * Replaces text in a string, using a regular expression or search string.
    * @param {string | RegExp} searchValue A string to search for.
    * @param {string | (substring: string, ...args: any[]) => string} replaceValue A string containing the text to replace for every successful match of searchValue in this string.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   replace(searchValue, replaceValue) {
     this._value = this._value.replace(searchValue, replaceValue);
@@ -202,7 +202,7 @@ class NativeString {
    * @param {number} [start] The index to the beginning of the specified portion of stringObj.
    * @param {number} [end] The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.
    * If this value is not specified, the substring continues to the end of stringObj.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   slice(start, end) {
     this._value = this._value.slice(start, end);
@@ -235,7 +235,7 @@ class NativeString {
    * @param {number} start The zero-based index number indicating the beginning of the substring.
    * @param {number} [end] Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.
    * If end is omitted, the characters from start through the end of the original string are returned.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   substring(start, end) {
     this._value = this._value.substring(start, end);
@@ -256,7 +256,7 @@ class NativeString {
 
   /**
    * Converts all the alphabetic characters in a string to lowercase.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   toLowerCase() {
     this._value = this._value.toLowerCase(start, end);
@@ -265,7 +265,7 @@ class NativeString {
 
   /**
    * Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   toLocaleLowerCase() {
     this._value = this._value.toLocaleLowerCase();
@@ -274,7 +274,7 @@ class NativeString {
 
   /**
    * Converts all the alphabetic characters in a string to uppercase.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   toUpperCase() {
     this._value = this._value.toUpperCase();
@@ -283,7 +283,7 @@ class NativeString {
 
   /**
    * Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   toLocaleUpperCase() {
     this._value = this._value.toLocaleUpperCase();
@@ -291,7 +291,7 @@ class NativeString {
   }
 
   /**
-   * Returns a string representation of a StarkString Object
+   * Returns a string representation of a StarkStringType & NativeString Object
    * @return {string}
    */
   toString() {
@@ -300,7 +300,7 @@ class NativeString {
 
   /**
    * Removes the leading and trailing white space and line terminator characters from a string.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   trim() {
     this._value = this._value.trim();
@@ -309,7 +309,7 @@ class NativeString {
 
   /**
    * Removes whitespace from the left end of a string.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   trimLeft() {
     this._value = this._value.trimLeft();
@@ -318,7 +318,7 @@ class NativeString {
 
   /**
    * Removes whitespace from the right end of a string.
-   * @returns {StarkString}
+   * @returns {StarkStringType & NativeString}
    */
   trimRight() {
     this._value = this._value.trimRight();
