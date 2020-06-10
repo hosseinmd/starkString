@@ -259,7 +259,7 @@ class NativeString {
    * @returns {StarkStringType & NativeString}
    */
   toLowerCase() {
-    this._value = this._value.toLowerCase(start, end);
+    this._value = this._value.toLowerCase();
     return this;
   }
 
