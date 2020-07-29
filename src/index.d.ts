@@ -1,33 +1,109 @@
-/**
- * @typedef {import("./index").StarkString} StarkStringType
- */
-
-/**
- * @typedef {NativeString}
+﻿/**
+ * @typedef {StarkString}
  * @class
  */
-class NativeString {
-  constructor(value){
-    this._value = value;
-  }
+declare class StarkString {
+
+  /**
+   * Returns a copy of a StarkString Object
+   */
+  clone(): StarkString 
+
+  /**
+   * Used for set new string
+   */
+  set(value:string):StarkString 
+
+  /**
+   * Used for convert Arabic characters to Persian
+   */
+  persianChar(): StarkString
+
+  /**
+   * Used for convert any numbers to English
+   */
+  englishNumber(): StarkString
+
+  /**
+   * Used for convert Arabic numbers to Persian
+   */
+  persianNumber(): StarkString
+
+  /**
+   * Used for convert English numbers to arabic
+   */
+  arabicNumber(): StarkString
+
+  /**
+   * Used for decode Persian Characters in URL
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   */
+  fixURL(): StarkString
+
+  /**
+   * Used for decode Persian Characters in URL
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   */
+  decodeURL(): StarkString
+
+  /**
+   * Used for Change keyboard layout
+   */
+  switchKey(): StarkString
+
+  /**
+   * Used for get persian words representation of a number
+   */
+  digitsToWords(): StarkString
+
+  /**
+   * Used for Zero-width non-joiner correction
+   * @return {StarkString & NativeStringType} StarkString object
+   */
+  halfSpace(): StarkString
+
+
+  /**
+   * Return true if value is Integer
+   */
+  isInteger():boolean 
+
+  /**
+   * Used for validation back card number
+   */
+  isValidBankCard():boolean
+
+  /**
+   * Used for convert to price mode
+   */
+  currency(): StarkString
+
+  /**
+   * Remove anything expect numbers
+   */
+  parseNumber(): StarkString
+
+  /**
+   * convert any char to star ("*")
+   */
+  security(): StarkString
+
+  /**
+   * convert to number by native Number function
+   */
+  toNumber(): number
+
   /**
    * Returns the character at the specified index.
    * @param {number} pos The zero-based index of the desired character.
-   * @return {StarkStringType & NativeString}
    */
-  charAt(pos) {
-    this._value = this._value.charAt(pos);
-    return this;
-  }
+  charAt(pos: number): StarkString
 
   /**
    * Returns the Unicode value of the character at the specified location.
    * @param {number} index The zero-based index of the desired character. If there is no character at the specified index, NaN is returned.
-   * @return {number}
    */
-  charCodeAt(index) {
-    return this._value.charCodeAt(index);
-  }
+  charCodeAt(index: number): number
 
   /**
    * Returns a nonnegative integer Number less than 1114112 (0x110000) that is the code point
@@ -35,22 +111,14 @@ class NativeString {
    * the String resulting from converting this object to a String.
    * If there is no element at that position, the result is undefined.
    * If a valid UTF-16 surrogate pair does not begin at pos, the result is the code unit at pos.
-   * @param {number} pos
-   * @return {number}
    */
-  codePointAt(pos) {
-    return this._value.codePointAt(pos);
-  }
+  codePointAt(pos: number): number
 
   /**
    * Returns a string that contains the concatenation of two or more strings.
    * @param {string[]} strings The strings to append to the end of the string.
-   * @return {StarkStringType & NativeString}
    */
-  concat(...strings) {
-    this._value = this._value.concat(...strings);
-    return this;
-  }
+  concat(...strings): StarkString
 
   /**
    * Returns true if the sequence of elements of searchString converted to a String is the
@@ -58,82 +126,56 @@ class NativeString {
    * endPosition – length(this). Otherwise returns false.
    * @param {string} searchString
    * @param {number} [endPosition]
-   * @returns {boolean}
    *
    */
-  endsWith(searchString, endPosition) {
-    return this._value.endsWith(searchString, endPosition);
-  }
-
+  endsWith(searchString: string, endPosition: number) : boolean
   /**
    * Returns true if searchString appears as a substring of the result of converting this
    * object to a String, at one or more positions that are
    * greater than or equal to position; otherwise, returns false.
    * @param {string} searchString search string
    * @param {number} [position] If position is undefined, 0 is assumed, so as to search all of the String.
-   * @returns {boolean}
    */
-  includes(searchString, position) {
-    return this._value.includes(searchString, position);
-  }
+  includes(searchString: string, position: number): boolean
 
   /**
    * Returns the position of the first occurrence of a substring.
    * @param {string} searchString The substring to search for in the string
    * @param {number} [position] The index at which to begin searching the String object. If omitted, search starts at the beginning of the string.
-   * @returns {number}
    */
-  indexOf(searchString, position) {
-    return this._value.indexOf(searchString, position);
-  }
+  indexOf(searchString: string, position: number): number
 
   /**
    * Returns the last occurrence of a substring in the string.
    * @param {string} searchString The substring to search for.
    * @param {number} [position] The index at which to begin searching. If omitted, the search begins at the end of the string.
-   * @returns {number}
    */
-  lastIndexOf(searchString, position) {
-    return this._value.lastIndexOf(searchString, position);
-  }
+  lastIndexOf(searchString: string, position: number): number
 
   /**
    * Returns the length of a String object.
-   * @returns {number}
    */
-  get length() {
-    return this._value.length();
-  }
+  length: number
 
   /**
    * Determines whether two strings are equivalent in the current locale.
    * @param {string} that String to compare to target string
-   * @returns {number}
    */
-  localeCompare(that) {
-    return this._value.localeCompare(that);
-  }
+  localeCompare(that: string): number
 
   /**
    * Matches a string an object that supports being matched against, and returns an array containing the results of that search.
    * @param {{ [Symbol.match](string: string): RegExpMatchArray | null; }} matcher An object that supports being matched against.
-   * @returns {RegExpMatchArray | null}
    */
-  match(matcher) {
-    return this._value.match(matcher);
-  }
+  match(matcher: { [Symbol.match](string: string): RegExpMatchArray | null }): RegExpMatchArray | null
 
   /**
    * Returns the String value result of normalizing the string into the normalization form
    * named by form as specified in Unicode Standard Annex #15, Unicode Normalization Forms.
    * @param {"NFC" | "NFD" | "NFKC" | "NFKD"} form Applicable values: "NFC", "NFD", "NFKC", or "NFKD", If not specified default
    * is "NFC"
-   * @returns {StarkStringType & NativeString}
    */
-  normalize(form) {
-    this._value = this._value.normalize(form);
-    return this;
-  }
+  normalize(form: "NFC" | "NFD" | "NFKC" | "NFKD"): StarkString
 
   /**
    * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
@@ -145,12 +187,8 @@ class NativeString {
    * @param {string} [fillString] The string to pad the current string with.
    *        If this string is too long, it will be truncated and the left-most part will be applied.
    *        The default value for this parameter is " " (U+0020).
-   * @returns {StarkStringType & NativeString}
    */
-  padEnd(maxLength, fillString) {
-    this._value = this._value.padEnd(maxLength, fillString);
-    return this;
-  }
+  padEnd(maxLength: number, fillString: string): StarkString
 
   /**
    * Pads the current string with a given string (possibly repeated) so that the resulting string reaches a given length.
@@ -162,65 +200,43 @@ class NativeString {
    * @param {string} [fillString] The string to pad the current string with.
    *        If this string is too long, it will be truncated and the left-most part will be applied.
    *        The default value for this parameter is " " (U+0020).
-   * @returns {StarkStringType & NativeString}
    */
-  padStart(maxLength, fillString) {
-    this._value = this._value.padStart(maxLength, fillString);
-    return this;
-  }
+  padStart(maxLength: number, fillString: string): StarkString
 
   /**
    * Returns a String value that is made from count copies appended together. If count is 0,
    * the empty string is returned.
    * @param {number} count number of copies to append
-   * @returns {StarkStringType & NativeString}
    */
-  repeat(count) {
-    this._value = this._value.repeat(count);
-    return this;
-  }
+  repeat(count: number): StarkString
 
   /**
    * Replaces text in a string, using a regular expression or search string.
    * @param {string | RegExp} searchValue A string to search for.
    * @param {string | (substring: string, ...args: any[]) => string} replaceValue A string containing the text to replace for every successful match of searchValue in this string.
-   * @returns {StarkStringType & NativeString}
    */
-  replace(searchValue, replaceValue) {
-    this._value = this._value.replace(searchValue, replaceValue);
-    return this;
-  }
+  replace(searchValue: string | RegExp, replaceValue): string | ((substring: string, ...args: any[]) => string)
 
   /**
    * Finds the first substring match in a regular expression search.
    * @param {string | RegExp} regexp The regular expression pattern and applicable flags.
-   * @returns {number}
    */
-  search(regexp) {
-    return this._value.search(regexp);
-  }
+  search(regexp: string | RegExp) :number
 
   /**
    * Returns a section of a string.
    * @param {number} [start] The index to the beginning of the specified portion of stringObj.
    * @param {number} [end] The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end.
    * If this value is not specified, the substring continues to the end of stringObj.
-   * @returns {StarkStringType & NativeString}
    */
-  slice(start, end) {
-    this._value = this._value.slice(start, end);
-    return this;
-  }
+  slice(start: number, end: number): StarkString
 
   /**
    * Split a string into substrings using the specified separator and return them as an array.
    * @param {string | RegExp} separator A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.
    * @param {number} [limit] A value used to limit the number of elements returned in the array.
-   * @returns {string[]}
    */
-  split(separator, limit) {
-    return this._value.split(separator, limit);
-  }
+  split(separator: string | RegExp, limit: number): string[]
 
   // IE extensions
   /**
@@ -228,22 +244,15 @@ class NativeString {
    * @param {number} from The starting position of the desired substring. The index of the first character in the string is zero.
    * @param {number} [length] The number of characters to include in the returned substring.
    */
-  substr(from, length) {
-    this._value = this._value.substr(from, length);
-    return this;
-  }
+  substr(from: number, length: number): StarkString
 
   /**
    * Returns the substring at the specified location within a String object.
    * @param {number} start The zero-based index number indicating the beginning of the substring.
    * @param {number} [end] Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.
    * If end is omitted, the characters from start through the end of the original string are returned.
-   * @returns {StarkStringType & NativeString}
    */
-  substring(start, end) {
-    this._value = this._value.substring(start, end);
-    return this;
-  }
+  substring(start: number, end: number): StarkString
 
   /**
    * Returns true if the sequence of elements of searchString converted to a String is the
@@ -251,87 +260,54 @@ class NativeString {
    * position. Otherwise returns false.
    * @param {string} searchString
    * @param {number} [position]
-   * @returns {boolean}
    */
-  startsWith(searchString, position) {
-    return this._value.startsWith(searchString, position);
-  }
+  startsWith(searchString: string, position: number): boolean
 
   /**
    * Converts all the alphabetic characters in a string to lowercase.
-   * @returns {StarkStringType & NativeString}
    */
-  toLowerCase() {
-    this._value = this._value.toLowerCase();
-    return this;
-  }
+  toLowerCase(): StarkString
 
   /**
    * Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.
-   * @returns {StarkStringType & NativeString}
    */
-  toLocaleLowerCase() {
-    this._value = this._value.toLocaleLowerCase();
-    return this;
-  }
+  toLocaleLowerCase(): StarkString
 
   /**
    * Converts all the alphabetic characters in a string to uppercase.
-   * @returns {StarkStringType & NativeString}
    */
-  toUpperCase() {
-    this._value = this._value.toUpperCase();
-    return this;
-  }
+  toUpperCase():StarkString
 
   /**
    * Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.
-   * @returns {StarkStringType & NativeString}
    */
-  toLocaleUpperCase() {
-    this._value = this._value.toLocaleUpperCase();
-    return this;
-  }
+  toLocaleUpperCase(): StarkString
 
   /**
    * Returns a string representation of a StarkStringType & NativeString Object
    * @return {string}
    */
-  toString() {
-    return this._value.toString();
-  }
+  toString(): string
 
   /**
    * Removes the leading and trailing white space and line terminator characters from a string.
-   * @returns {StarkStringType & NativeString}
    */
-  trim() {
-    this._value = this._value.trim();
-    return this;
-  }
+  trim(): StarkString
 
   /**
    * Removes whitespace from the left end of a string.
-   * @returns {StarkStringType & NativeString}
    */
-  trimLeft() {
-    this._value = this._value.trimLeft();
-    return this;
-  }
+  trimLeft(): StarkString
 
   /**
    * Removes whitespace from the right end of a string.
-   * @returns {StarkStringType & NativeString}
    */
-  trimRight() {
-    this._value = this._value.trimRight();
-    return this;
-  }
+  trimRight(): StarkString
 
   /** Returns the primitive value of the specified object. */
-  valueOf() {
-    return this._value.valueOf();
-  }
+  valueOf()
 }
 
-module.exports = NativeString;
+declare function starkString(value: string | number | (string | number)[]): StarkString {}
+
+export default starkString;

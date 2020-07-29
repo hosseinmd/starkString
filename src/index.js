@@ -43,11 +43,7 @@ function starkString(value) {
  */
 class StarkString extends NativeString {
   constructor(value) {
-    super();
-    /**
-     * @private
-     */
-    this._value = value;
+    super(value);
   }
 
   /**

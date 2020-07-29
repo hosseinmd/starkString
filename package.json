@@ -16,6 +16,7 @@
         "l10n"
     ],
     "main": "src/index",
+    "types": "src/index.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/hosseinmd/starkString.git"
