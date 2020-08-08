@@ -1,6 +1,6 @@
 //Prepare test
 
-const starkString = require("./../src");
+import starkString from "./../lib";
 
 test("should decode unreadable characters to correct Persian characters", () => {
   expect(

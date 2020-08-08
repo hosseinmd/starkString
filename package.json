@@ -15,8 +15,8 @@
         "i18n",
         "l10n"
     ],
-    "main": "src/index",
-    "types": "src/index.d.ts",
+    "main": "lib/index",
+    "types": "lib/index.d.ts",
     "repository": {
         "type": "git",
         "url": "https://github.com/hosseinmd/starkString.git"
@@ -30,9 +30,22 @@
         }
     ],
     "devDependencies": {
-        "jest": "^24.7.1"
+        "@react-native-community/eslint-config": "1.1.0",
+        "@typescript-eslint/eslint-plugin": "^3.8.0",
+        "@typescript-eslint/parser": "^2.20.0",
+        "@babel/preset-env": "^7.11.0",
+        "babel-jest": "^24.9.0",
+        "eslint": "7.3.1",
+        "eslint-plugin-prettier": "3.1.4",
+        "jest": "26.0.1",
+        "prettier": "2.0.5",
+        "prettier-plugin-jsdoc": "^0.0.21",
+        "ts-jest": "25.5.1",
+        "typescript": "3.9.7"
     },
     "scripts": {
-        "test": "jest"
+        "prepare": "yarn build",
+        "build": "tsc",
+        "test": "yarn build && jest"
     }
 }

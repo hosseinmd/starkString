@@ -1,15 +1,14 @@
 //Prepare test
-const starkString = require("./../src");
-
+import starkString from "./../lib";
 
 test("should throw error", () => {
   expect(() => starkString({})).toThrowError(Error);
 });
 
 test("should throw error", () => {
-  expect(() => starkString(["","1",Symbol()])).toThrowError(Error);
+  expect(() => starkString(["", "1", Symbol()])).toThrowError(Error);
 });
 
 test("should throw error", () => {
-  expect(() => starkString(()=>{})).toThrowError(Error);
+  expect(() => starkString(() => {})).toThrowError(Error);
 });

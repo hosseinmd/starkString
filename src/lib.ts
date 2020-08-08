@@ -3,12 +3,8 @@ const regExpArabicNumber = new RegExp(/[\u0660-\u0669]/, "g"),
   regExpPersianNumber = new RegExp(/[\u06f0-\u06f9]/, "g"),
   regExpEnglishNumber = new RegExp(/[\u0030-\u0039]/, "g");
 
-/**
- * Used for convert Arabic characters to Persian
- * @param {String} value
- * @return {string}
- */
-function persianChar(value) {
+/** Used for convert Arabic characters to Persian */
+function persianChar(value: string): string {
   if (!value) {
     return "";
   }
@@ -32,106 +28,89 @@ function persianChar(value) {
   return value;
 }
 
-/**
- * Used for convert any numbers to English
- *
- * @param {String} value
- * @return {string}
- */
-function englishNumber(value) {
+/** Used for convert any numbers to English */
+function englishNumber(value: string): string {
   if (!value) {
     return value;
   }
 
   return value
-    .replace(regExpArabicNumber, function(c) {
-      return c.charCodeAt(0) - 0x0660;
+    .replace(regExpArabicNumber, function (c) {
+      return (c.charCodeAt(0) - 0x0660) as any;
     })
-    .replace(regExpPersianNumber, function(c) {
-      return c.charCodeAt(0) - 0x06f0;
+    .replace(regExpPersianNumber, function (c) {
+      return (c.charCodeAt(0) - 0x06f0) as any;
     });
 }
 
-/**
- * Used for convert any numbers to Persian
- *
- * @param {String} value
- * @return {string}
- */
-function persianNumber(value) {
+/** Used for convert any numbers to Persian */
+function persianNumber(value: string): string {
   if (!value) {
     return "";
   }
 
   return value
-    .replace(regExpArabicNumber, function(c) {
-      return String.fromCharCode(parseInt(c.charCodeAt(0) - 0x0660) + 0x06f0);
+    .replace(regExpArabicNumber, function (c) {
+      return String.fromCharCode(
+        parseInt((c.charCodeAt(0) - 0x0660) as any, 10) + 0x06f0,
+      );
     })
-    .replace(regExpEnglishNumber, function(c) {
-      return String.fromCharCode(parseInt(c) + 0x06f0);
+    .replace(regExpEnglishNumber, function (c) {
+      return String.fromCharCode(parseInt(c, 10) + 0x06f0);
     });
 }
 
-/**
- * Used for convert any numbers to arabic
- *
- * @param {String} value
- * @return {string}
- */
-function arabicNumber(value) {
+/** Used for convert any numbers to arabic */
+function arabicNumber(value: string): string {
   if (!value) {
     return "";
   }
   value = value.toString();
 
   return value
-    .replace(regExpPersianNumber, function(c) {
-      return String.fromCharCode(parseInt(c.charCodeAt(0) - 0x06f0) + 0x0660);
+    .replace(regExpPersianNumber, function (c) {
+      return String.fromCharCode(
+        parseInt((c.charCodeAt(0) - 0x06f0) as any, 10) + 0x0660,
+      );
     })
-    .replace(regExpEnglishNumber, function(c) {
-      return String.fromCharCode(parseInt(c) + 0x0660);
+    .replace(regExpEnglishNumber, function (c) {
+      return String.fromCharCode(parseInt(c, 10) + 0x0660);
     });
 }
 
 /**
  * Used for decode Persian Characters in URL
  * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
- * @param {String} value
- * @return {string}
  */
-function decodeURL(value) {
+function decodeURL(value: string): string {
   if (!value) {
     return "";
   }
   // Replace every %20 with _ to protect them from decodeURI
   let old = "";
-  while (old != value) {
+  while (old !== value) {
     old = value;
     value = value.replace(
-      /(http\S+?)\%20/g,
+      /(http\S+?)%20/g,
       "$1\u200c\u200c\u200c_\u200c\u200c\u200c",
     );
   }
   // Decode URIs
   // NOTE: This would convert all %20's to _'s which could break some links
   // but we will undo that later on
-  value = value.replace(/(http\S+)/g, function(s, p) {
+  value = value.replace(/(http\S+)/g, function (s, p) {
     return decodeURI(p);
   });
   // Revive all instances of %20 to make sure no links is broken
   return value.replace(/\u200c\u200c\u200c_\u200c\u200c\u200c/g, "%20");
 }
 
-/**
- * Used for Change keyboard layout
- * @param {String} value
- * @return {string}
- */
-function switchKey(value) {
+/** Used for Change keyboard layout */
+function switchKey(value: string): string {
   if (!value) {
     return "";
   }
-  const persianChar = [
+  const persianChars = [
       "ض",
       "ص",
       "ث",
@@ -200,19 +179,15 @@ function switchKey(value) {
       "?",
     ];
 
-  for (let i = 0, charsLen = persianChar.length; i < charsLen; i++) {
-    value = value.replace(new RegExp(persianChar[i], "g"), englishChar[i]);
+  for (let i = 0, charsLen = persianChars.length; i < charsLen; i++) {
+    value = value.replace(new RegExp(persianChars[i], "g"), englishChar[i]);
   }
   return value;
 }
 
-/**
- * Used for get persian words representation of a number
- * @param {String} value
- * @return {string}
- */
-function digitsToWords(value) {
-  if (!isFinite(value)) {
+/** Used for get persian words representation of a number */
+function digitsToWords(value: number | string): string {
+  if (!isFinite(value as number)) {
     return "";
   }
 
@@ -230,7 +205,7 @@ function digitsToWords(value) {
     "کویینتیلیون",
     "سکستیلیون",
   ];
-  const numbers = {
+  const numbers: { [x: string]: any; [x: number]: any } = {
     0: [
       "",
       "صد",
@@ -270,23 +245,23 @@ function digitsToWords(value) {
     .reverse()
     .join("")
     .split(",")
-    .map(function(str) {
+    .map(function (str) {
       return Array(4 - str.length).join("0") + str;
     });
 
-  let result = (function() {
+  let result = (function () {
     const _results = [];
     for (let iThree in valueParts) {
       const three = valueParts[iThree];
 
-      let resultThree = (function() {
-        let _i, _len;
+      let resultThree = (function () {
+        let _i;
         const _results1 = [];
 
         for (let i = (_i = 0), _len = three.length; _i < _len; i = ++_i) {
           const digit = three[i];
           if (i === 1 && digit === "1") {
-            _results1.push(numbers.two[three[2]]);
+            _results1.push(numbers.two[three[2] as any]);
           } else if (
             (i !== 2 || three[1] !== "1") &&
             numbers[i][digit] !== ""
@@ -300,33 +275,31 @@ function digitsToWords(value) {
         return _results1;
       })();
 
-      resultThree = resultThree.join(delimiter);
-      const _result = resultThree
-        ? resultThree + " " + parts[valueParts.length - parseInt(iThree) - 1]
-        : resultThree;
+      const resultThreeString = resultThree.join(delimiter);
+      const _result = resultThreeString
+        ? resultThreeString +
+          " " +
+          parts[valueParts.length - parseInt(iThree, 10) - 1]
+        : resultThreeString;
       _results.push(_result);
     }
     return _results;
   })();
 
-  result = result.filter(function(x) {
+  result = result.filter(function (x) {
     return x.trim() !== "";
   });
 
-  result = result.join(delimiter).trim();
-  if (result === "") {
-    result = numbers.zero;
+  const resultString = result.join(delimiter).trim();
+  if (resultString === "") {
+    return numbers.zero;
   }
 
-  return result;
+  return resultString;
 }
 
-/**
- * Used for Zero-width non-joiner correction
- * @param {string} value
- * @return {string}
- */
-function halfSpace(value) {
+/** Used for Zero-width non-joiner correction */
+function halfSpace(value: string): string {
   if (!value) {
     return "";
   }
@@ -342,30 +315,22 @@ function halfSpace(value) {
   return value;
 }
 
-/**
- * Remove anything expect numbers
- * @param {String} value
- * @return {string}
- */
-function parseNumber(string) {
-  return englishNumber(string).replace(/\D/g, "");
+/** Remove anything expect numbers */
+function parseNumber(value: string): string {
+  return englishNumber(value).replace(/\D/g, "");
 }
 
-/**
- * Used for validation integer number
- * @param {string} value
- * @return {boolean}
- */
-function isInteger(value) {
+/** Used for validation integer number */
+function isInteger(value: string): boolean {
   return /^\d+$/.test(value);
 }
 
 /**
  * Used for validation back card number
+ *
  * @param {string} value 16 digit
- * @return {boolean}
  */
-function isValidBankCard(value) {
+function isValidBankCard(value: string): boolean {
   // accept only digits, dashes or spaces
   if (!isInteger(value)) return false;
 
@@ -386,19 +351,15 @@ function isValidBankCard(value) {
     bEven = !bEven;
   }
 
-  return nCheck % 10 == 0;
+  return nCheck % 10 === 0;
 }
 
-/**
- * Used for convert english number to currency mode
- * @param {string} value
- * @return {boolean}
- */
-function currency(value) {
+/** Used for convert english number to currency mode */
+function currency(value: string): string {
   if (!value) return "";
 
   return value
-    .replace(/[^\d\.\-]/g, "")
+    .replace(/[^\d.-]/g, "")
     .replace(/(\.\d{2})[\W\w]+/g, "$1")
     .split("")
     .reverse()
@@ -407,23 +368,17 @@ function currency(value) {
     .split("")
     .reverse()
     .join("")
-    .replace(/^([\-]{0,1}),/, "$1")
+    .replace(/^([-]{0,1}),/, "$1")
     .replace(/(\.\d)$/, "$1" + "0")
     .replace(/\.$/, ".00");
 }
 
-/**
- * convert any char to star ("*")
- * @param {string} value
- * @return {string}
- */
-function security(value) {
+/** Convert any char to star ("*") */
+function security(value: string): string {
   return "*".repeat(value.length);
 }
 
-//Expose StarkString
-//CommonJS module is defined
-module.exports = {
+export {
   persianChar,
   englishNumber,
   persianNumber,

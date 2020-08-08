@@ -1,5 +1,5 @@
 //Prepare test
-const starkString = require("./../src");
+import starkString from "./../lib";
 
 test("should validate card number 1", () => {
   expect(starkString("6104337638408961").isValidBankCard()).toBe(true);
