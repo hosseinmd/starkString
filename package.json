@@ -1,6 +1,6 @@
 {
     "name": "starkstring",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "Persian language localization.",
     "homepage": "http://github.com/hosseinmd/starkString",
     "author": "Hossein Mohammadi <hosseinm.developer@gmail.com> ",
@@ -30,10 +30,10 @@
         }
     ],
     "devDependencies": {
+        "@babel/preset-env": "^7.11.0",
         "@react-native-community/eslint-config": "1.1.0",
         "@typescript-eslint/eslint-plugin": "^3.8.0",
         "@typescript-eslint/parser": "^2.20.0",
-        "@babel/preset-env": "^7.11.0",
         "babel-jest": "^24.9.0",
         "eslint": "7.3.1",
         "eslint-plugin-prettier": "3.1.4",
