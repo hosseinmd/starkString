@@ -144,3 +144,5 @@ class StarkString extends NativeString {
 //Expose StarkString
 //CommonJS module is defined
 export default starkString;
+
+export type {StarkString}
