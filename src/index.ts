@@ -73,7 +73,8 @@ class StarkString extends NativeString {
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
+   * s
    */
   fixURL(): StarkString {
     this._value = decodeURL(this._value);
@@ -82,7 +83,8 @@ class StarkString extends NativeString {
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
+   * s
    */
   decodeURL(): StarkString {
     this._value = decodeURL(this._value);
@@ -124,8 +126,13 @@ class StarkString extends NativeString {
   }
 
   /** Remove anything expect numbers */
-  parseNumber(): StarkString {
+  parseNumber({ max }: { max?: number } = {}): StarkString {
     this._value = parseNumber(this._value);
+    if (typeof max === "number") {
+      if (Number(this._value) > max) {
+        this._value = String(max);
+      }
+    }
     return this;
   }
 
@@ -145,4 +152,4 @@ class StarkString extends NativeString {
 //CommonJS module is defined
 export default starkString;
 
-export type {StarkString}
+export type { StarkString };
