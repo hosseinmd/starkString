@@ -12,6 +12,7 @@
   currency,
   security,
   parseNumber,
+  toNumber,
 } from "./lib";
 import NativeString from "./NativeString";
 
@@ -73,8 +74,7 @@ class StarkString extends NativeString {
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
-   * s
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
    */
   fixURL(): StarkString {
     this._value = decodeURL(this._value);
@@ -83,8 +83,7 @@ class StarkString extends NativeString {
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
-   * s
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
    */
   decodeURL(): StarkString {
     this._value = decodeURL(this._value);
@@ -142,8 +141,15 @@ class StarkString extends NativeString {
     return this;
   }
 
-  /** Convert to number by native Number function */
-  toNumber(): number {
+  /** Convert any string to number */
+  toStringNumber(options?: Parameters<typeof toNumber>[1]): string {
+    this._value = toNumber(this._value, options);
+    return this._value;
+  }
+
+  /** Convert any string to number */
+  toNumber(options?: Parameters<typeof toNumber>[1]): number {
+    this.toStringNumber(options);
     return Number(this._value);
   }
 }

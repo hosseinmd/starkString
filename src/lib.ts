@@ -315,14 +315,74 @@ function halfSpace(value: string): string {
   return value;
 }
 
-/** Remove anything expect numbers */
+/** Remove anything expect numbers, this function will remove negative and decimal */
 function parseNumber(value: string): string {
   return englishNumber(value).replace(/\D/g, "");
 }
 
+/**
+ * Convert numbers to english number and remove anything expect integer or decimal
+ * numbers
+ */
+function toNumber(
+  value: string,
+  {
+    negative = true,
+    decimal = true,
+    max,
+    min,
+  }: {
+    /** Default is true */
+    negative?: boolean;
+    /** Default is true */
+    decimal?: boolean;
+    max?: number;
+    min?: number;
+  } = {},
+): string {
+  let num =
+    englishNumber(value)
+      .match(/(-?\.?\d?)+/g)
+      ?.join("") || "";
+
+  // if (options?.negative && options?.decimal) {
+
+  // }
+  if (decimal && negative) {
+    num = num.replace(/(^.+)(-)/g, "$1");
+    num = num.replace(/^\./g, "0.");
+    num = num.replace(/^-\./g, "-0.");
+    num = num.match(/^-?\d*\.?\d*$/g)?.join("") || "";
+  } else {
+    if (negative) {
+      num = num.replace(/(^.+)(-)/g, "$1");
+      num = num.match(/^-?(\d?)+$/g)?.join("") || "";
+    } else if (decimal) {
+      num = num.replace(/^\./g, "0.");
+      num = num.match(/\d*\.?\d*$/g)?.join("") || "";
+    } else {
+      num = num.replace(/\D/g, "");
+    }
+  }
+
+  if (typeof max === "number") {
+    if (Number(num) > max) {
+      num = String(max);
+    }
+  }
+
+  if (typeof min === "number") {
+    if (Number(num) < min) {
+      num = String(min);
+    }
+  }
+
+  return num;
+}
+
 /** Used for validation integer number */
 function isInteger(value: string): boolean {
-  return /^\d+$/.test(value);
+  return Number.isInteger(Number(value));
 }
 
 /**
@@ -392,4 +452,5 @@ export {
   currency,
   security,
   parseNumber,
+  toNumber,
 };

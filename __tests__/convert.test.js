@@ -63,3 +63,45 @@ test("parseNumber with max", () => {
     "100",
   );
 });
+
+test("Negative number", () => {
+  expect(starkString("-48g39 d").toNumber({ negative: false })).toBe(4839);
+
+  expect(starkString("d -48g39 d").toStringNumber()).toBe("-4839");
+
+  expect(starkString("-48g39 d").toNumber()).toBe(-4839);
+  expect(starkString("-48g-39 d").toNumber()).toBe(-4839);
+
+  expect(starkString("-").toStringNumber()).toBe("-");
+
+  expect(starkString("48g39 d").toStringNumber()).toBe("4839");
+});
+
+test("Decimal number", () => {
+  expect(
+    starkString("-48g.39 d").toStringNumber({
+      negative: false,
+      decimal: false,
+    }),
+  ).toBe("4839");
+
+  expect(starkString("d 48g34.9 d").toStringNumber({ decimal: true })).toBe(
+    "4834.9",
+  );
+
+  expect(starkString(".48g39 d").toStringNumber({ decimal: true })).toBe(
+    "0.4839",
+  );
+
+  expect(starkString("4.8g39 d").toStringNumber()).toBe("4.839");
+});
+
+test("Decimal Negative number", () => {
+  expect(starkString("-48g.39 d").toStringNumber()).toBe("-48.39");
+
+  expect(starkString("d 4-8g34.9 d").toStringNumber()).toBe("4834.9");
+
+  expect(starkString("-.48g39 d").toStringNumber()).toBe("-0.4839");
+
+  expect(starkString(" -4.8g39 d").toStringNumber()).toBe("-4.839");
+});
