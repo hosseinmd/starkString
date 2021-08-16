@@ -320,10 +320,7 @@ function parseNumber(value: string): string {
   return englishNumber(value).replace(/\D/g, "");
 }
 
-/**
- * Convert numbers to english number and remove anything expect integer or decimal
- * numbers
- */
+/** Convert numbers to english number and remove anything expect integer or decimal numbers */
 function toNumber(
   value: string,
   {

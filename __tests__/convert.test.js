@@ -105,3 +105,15 @@ test("Decimal Negative number", () => {
 
   expect(starkString(" -4.8g39 d").toStringNumber()).toBe("-4.839");
 });
+
+test("Min number", () => {
+  expect(starkString("-48g.39 d").toStringNumber({ min: 0 })).toBe("0");
+
+  expect(starkString("-").toStringNumber({ min: 0 })).toBe("-");
+
+  expect(starkString("-.48g39 d").toStringNumber({ min: -1 })).toBe("-0.4839");
+
+  expect(starkString(" -4.8g39 d").toStringNumber({ min: -1.44 })).toBe(
+    "-1.44",
+  );
+});
