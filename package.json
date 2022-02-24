@@ -1,6 +1,6 @@
 {
     "name": "starkstring",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "description": "Persian language localization.",
     "homepage": "http://github.com/hosseinmd/starkString",
     "author": "Hossein Mohammadi <hosseinm.developer@gmail.com> ",
@@ -40,12 +40,12 @@
         "jest": "26.0.1",
         "prettier": "^2.3.2",
         "prettier-plugin-jsdoc": "^0.3.23",
-        "ts-jest": "25.5.1",
         "react-scripts": "^5.0.0",
+        "ts-jest": "25.5.1",
         "typescript": "^4.3.5"
     },
     "scripts": {
-        "release": "yarn test && yarn build && yarn publish",
+        "release": "yarn test --watchAll=false && yarn build && yarn publish",
         "build": "tsc",
         "test": "react-scripts test"
     }
