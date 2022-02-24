@@ -1,5 +1,5 @@
 //Prepare test
-import starkString from "./../lib";
+import starkString from "./../";
 
 //persian char
 test("should change Arabic characters to Persian", () => {

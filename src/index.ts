@@ -73,17 +73,31 @@ class StarkString extends NativeString {
   }
 
   /**
-   * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   * Used for Normalize url
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
+   * s
    */
   fixURL(): StarkString {
-    this._value = decodeURL(this._value);
+    if (!this._value) {
+      return this;
+    }
+
+    if (/^(wss?(:|\/))/i.test(this._value)) {
+      this._value = this._value.replace(/^(ws)?(s)?(:*)(\/+)?/i, `ws$2://`);
+    } else if (/^(ftps?(:|\/))/i.test(this._value)) {
+      this._value = this._value.replace(/^(ftp)?(s)?(:*)(\/+)?/i, `ftp$2://`);
+    } else {
+      this._value = this._value.replace(/^(http)?(s)?(:*)(\/+)?/i, `http$2://`);
+    }
+
+    this._value = this._value.replace(/(\/?)$/i, `/`);
     return this;
   }
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.js
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
+   * s
    */
   decodeURL(): StarkString {
     this._value = decodeURL(this._value);

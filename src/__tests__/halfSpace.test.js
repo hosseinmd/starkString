@@ -1,5 +1,5 @@
 //Prepare test
-import starkString from "./../lib";
+import starkString from "./../";
 
 test("should convert to Zero-width non-joiner correction", () => {
   expect(

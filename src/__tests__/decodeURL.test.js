@@ -1,6 +1,4 @@
-//Prepare test
-
-import starkString from "./../lib";
+import starkString from "../";
 
 test("should decode unreadable characters to correct Persian characters", () => {
   expect(
