@@ -315,18 +315,7 @@ function halfSpace(value: string): string {
   return value;
 }
 
-/**
- * Remove anything expect numbers, this function will remove negative and
- * decimal
- */
-function parseNumber(value: string): string {
-  return englishNumber(value).replace(/\D/g, "");
-}
-
-/**
- * Convert numbers to english number and remove anything expect integer or
- * decimal numbers
- */
+/** Convert numbers to english number and remove anything expect integer or decimal numbers */
 function toNumber(
   value: string,
   {
@@ -454,6 +443,5 @@ export {
   isValidBankCard,
   currency,
   security,
-  parseNumber,
   toNumber,
 };

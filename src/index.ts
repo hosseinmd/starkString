@@ -11,7 +11,6 @@
   isInteger,
   currency,
   security,
-  parseNumber,
   toNumber,
 } from "./lib";
 import NativeString from "./NativeString";
@@ -74,8 +73,7 @@ class StarkString extends NativeString {
 
   /**
    * Used for Normalize url
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
-   * s
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions. s
    */
   fixURL(): StarkString {
     if (!this._value) {
@@ -96,8 +94,7 @@ class StarkString extends NativeString {
 
   /**
    * Used for decode Persian Characters in URL
-   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions.
-   * s
+   * https://fa.wikipedia.org/wiki/مدیاویکی:Gadget-Extra-Editbuttons-Functions. s
    */
   decodeURL(): StarkString {
     this._value = decodeURL(this._value);
@@ -139,13 +136,9 @@ class StarkString extends NativeString {
   }
 
   /** Remove anything expect numbers */
-  parseNumber({ max }: { max?: number } = {}): StarkString {
-    this._value = parseNumber(this._value);
-    if (typeof max === "number") {
-      if (Number(this._value) > max) {
-        this._value = String(max);
-      }
-    }
+  parseNumber(options?: Parameters<typeof toNumber>[1]): StarkString {
+    this.englishNumber();
+    this._value = toNumber(this._value, options);
     return this;
   }
 
@@ -157,13 +150,13 @@ class StarkString extends NativeString {
 
   /** Convert any string to number */
   toStringNumber(options?: Parameters<typeof toNumber>[1]): string {
-    this._value = toNumber(this._value, options);
+    this.parseNumber(options);
     return this._value;
   }
 
   /** Convert any string to number */
   toNumber(options?: Parameters<typeof toNumber>[1]): number {
-    this.toStringNumber(options);
+    this.parseNumber(options);
     return Number(this._value);
   }
 }

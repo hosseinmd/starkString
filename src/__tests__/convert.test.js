@@ -56,6 +56,8 @@ test("should convert to secure", () => {
 //parse number
 test("keep number", () => {
   expect(starkString("48g39 d").parseNumber().toString()).toBe("4839");
+
+  expect(starkString("48.39").parseNumber().toString()).toBe("48.39");
 });
 
 test("parseNumber with max", () => {
@@ -65,6 +67,7 @@ test("parseNumber with max", () => {
 });
 
 test("Negative number", () => {
+  expect(starkString("-48g39 d").toNumber({ negative: false })).toBe(4839);
   expect(starkString("-48g39 d").toNumber({ negative: false })).toBe(4839);
 
   expect(starkString("d -48g39 d").toStringNumber()).toBe("-4839");
