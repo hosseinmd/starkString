@@ -1,5 +1,5 @@
 //Prepare test
-import starkString from "./../";
+import starkString from "..";
 
 test("should convert numbers to Persian words", () => {
   expect(starkString("999999999999").digitsToWords().toString()).toBe(

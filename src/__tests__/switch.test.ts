@@ -1,5 +1,5 @@
 //Prepare test
-import starkString from "./../";
+import starkString from "..";
 
 test("should Convert Persian Chars to English Chars", () => {
   expect(

@@ -1,5 +1,5 @@
 //Prepare test
-import starkString from "./../";
+import starkString from "..";
 
 test("should validate card number 1", () => {
   expect(starkString("6104337638408961").isValidBankCard()).toBe(true);
