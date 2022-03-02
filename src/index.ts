@@ -12,7 +12,8 @@
   currency,
   security,
   toNumber,
-} from "./lib";
+  trimDecimalNumber,
+} from "./core";
 import NativeString from "./NativeString";
 
 /** StarkString constructor */
@@ -151,6 +152,18 @@ class StarkString extends NativeString {
   /** Convert any string to number */
   toStringNumber(options?: Parameters<typeof toNumber>[1]): string {
     this.parseNumber(options);
+    return this._value;
+  }
+
+  /**
+   * Padding decimal number with all number length for
+   *
+   * @example
+   *   starkString(`12.3456`).paddingDecimal(3); //`12.3`
+   *   starkString(`123456`).paddingDecimal(3); //`123456`
+   */
+  trimDecimal(allLength: number): string {
+    this._value = trimDecimalNumber(this._value, allLength);
     return this._value;
   }
 

@@ -337,9 +337,6 @@ function toNumber(
       .match(/(-?\.?\d?)+/g)
       ?.join("") || "";
 
-  // if (options?.negative && options?.decimal) {
-
-  // }
   if (decimal && negative) {
     num = num.replace(/(^.+)(-)/g, "$1");
     num = num.replace(/^\./g, "0.");
