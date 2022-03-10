@@ -9,10 +9,10 @@
   halfSpace,
   isValidBankCard,
   isInteger,
-  currency,
   security,
   toNumber,
-  trimDecimalNumber,
+  toDecimalPrecision,
+  toCurrency,
 } from "./core";
 import NativeString from "./NativeString";
 
@@ -131,8 +131,8 @@ class StarkString extends NativeString {
   }
 
   /** Used for convert to price mode */
-  currency(): StarkString {
-    this._value = currency(this._value);
+  toCurrency(formatCurrency = true): StarkString {
+    this._value = toCurrency(this._value, formatCurrency);
     return this;
   }
 
@@ -156,14 +156,14 @@ class StarkString extends NativeString {
   }
 
   /**
-   * Padding decimal number with all number length for
+   * Precision decimal number with all number length for
    *
    * @example
    *   starkString(`12.3456`).paddingDecimal(3); //`12.3`
    *   starkString(`123456`).paddingDecimal(3); //`123456`
    */
-  trimDecimal(allLength: number): string {
-    this._value = trimDecimalNumber(this._value, allLength);
+  toDecimalPrecision(allLength: number): string {
+    this._value = toDecimalPrecision(this._value, allLength);
     return this._value;
   }
 

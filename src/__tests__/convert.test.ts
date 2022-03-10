@@ -14,19 +14,6 @@ test("should change Arabic numbers to Persian", () => {
   );
 });
 
-//currency
-test("should Convert  numbers to currency persian", () => {
-  expect(starkString("12345609").currency().persianNumber().toString()).toBe(
-    "۱۲,۳۴۵,۶۰۹",
-  );
-});
-
-test("should Convert Persian numbers to currency", () => {
-  expect(
-    starkString("۱۲۳۴۵۶۷۹۰.۰۰").englishNumber().currency().toString(),
-  ).toBe("123,456,790.00");
-});
-
 // persian number
 test("should Convert English numbers to persian", () => {
   expect(starkString("1234567890 ١٢٣٤٥٦٧٨٩٠").persianNumber().toString()).toBe(

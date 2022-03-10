@@ -403,25 +403,6 @@ function isValidBankCard(value: string): boolean {
   return nCheck % 10 === 0;
 }
 
-/** Used for convert english number to currency mode */
-function currency(value: string): string {
-  if (!value) return "";
-
-  return value
-    .replace(/[^\d.-]/g, "")
-    .replace(/(\.\d{2})[\W\w]+/g, "$1")
-    .split("")
-    .reverse()
-    .join("")
-    .replace(/(\d{3})/g, "$1,")
-    .split("")
-    .reverse()
-    .join("")
-    .replace(/^([-]{0,1}),/, "$1")
-    .replace(/(\.\d)$/, "$1" + "0")
-    .replace(/\.$/, ".00");
-}
-
 /** Convert any char to star ("*") */
 function security(value: string): string {
   return "*".repeat(value.length);
@@ -438,7 +419,6 @@ export {
   halfSpace,
   isInteger,
   isValidBankCard,
-  currency,
   security,
   toNumber,
 };
