@@ -13,6 +13,8 @@
   toNumber,
   toDecimalPrecision,
   toCurrency,
+  toFixed,
+  floor,
 } from "./core";
 import NativeString from "./NativeString";
 
@@ -171,6 +173,35 @@ class StarkString extends NativeString {
   toNumber(options?: Parameters<typeof toNumber>[1]): number {
     this.parseNumber(options);
     return Number(this._value);
+  }
+
+  /**
+   * Convert to string representing a number in fixed-point notation.
+   *
+   * @param value
+   * @param fractionDigits — Number of digits after the decimal point. Must be
+   *   in the range 0 - 20, inclusive.
+   */
+  toFixed(fractionDigits?: number | undefined): StarkString {
+    this._value = toFixed(this._value, fractionDigits);
+
+    return this;
+  }
+  /**
+   * Returns a number in fixed-point notation.
+   *
+   * @param value
+   * @param fractionDigits — Number of digits after the decimal point. Must be
+   *   in the range 0 - 20, inclusive.
+   */
+  toFixedNumber(fractionDigits?: number | undefined): Number {
+    this._value = toFixed(this._value, fractionDigits);
+
+    return Number(this._value);
+  }
+  floor(): StarkString {
+    this._value = floor(this._value);
+    return this;
   }
 }
 
