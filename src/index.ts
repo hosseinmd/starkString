@@ -188,16 +188,16 @@ class StarkString extends NativeString {
     return this;
   }
   /**
-   * Returns a number in fixed-point notation.
+   * Convert to string representing a number in fixed-point notation and trim .
    *
    * @param value
    * @param fractionDigits — Number of digits after the decimal point. Must be
    *   in the range 0 - 20, inclusive.
    */
-  toFixedNumber(fractionDigits?: number | undefined): Number {
-    this._value = toFixed(this._value, fractionDigits);
+  toFixedNumber(fractionDigits?: number | undefined): StarkString {
+    this._value = Number(toFixed(this._value, fractionDigits)).toString();
 
-    return Number(this._value);
+    return this;
   }
   floor(): StarkString {
     this._value = floor(this._value);

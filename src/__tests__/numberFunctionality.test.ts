@@ -16,13 +16,17 @@ test("toFixed to string decimal", () => {
 });
 
 test("toFixedNumber to string rounding", () => {
-  expect(starkString("610433763.8408961").toFixedNumber()).toBe(610433764);
-  expect(starkString("610433763.4408961").toFixedNumber()).toBe(610433763);
+  expect(starkString("610433763.8408961").toFixedNumber().toNumber()).toBe(
+    610433764,
+  );
+  expect(starkString("610433763.4408961").toFixedNumber().toNumber()).toBe(
+    610433763,
+  );
 });
 
 test("toFixedNumber to string decimal", () => {
-  expect(starkString("8961").toFixedNumber(2)).toBe(8961);
-  expect(starkString("6.1").toFixedNumber(5)).toBe(6.1);
+  expect(starkString("8961").toFixedNumber(2).toNumber()).toBe(8961);
+  expect(starkString("6.1").toFixedNumber(5).toNumber()).toBe(6.1);
 });
 
 test("floor", () => {
