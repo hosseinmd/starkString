@@ -133,7 +133,7 @@ class StarkString extends NativeString {
   }
 
   /** Used for convert to price mode */
-  toCurrency(formatCurrency = true): StarkString {
+  toCurrency(formatCurrency = false): StarkString {
     this._value = toCurrency(this._value, formatCurrency);
     return this;
   }
@@ -202,6 +202,20 @@ class StarkString extends NativeString {
   floor(): StarkString {
     this._value = floor(this._value);
     return this;
+  }
+}
+
+// eslint-disable-next-line no-extend-native
+Object.defineProperties(String.prototype, {
+  starkString: {
+    get: function () {
+      return starkString(this);
+    },
+  },
+});
+declare global {
+  interface String {
+    starkString: StarkString;
   }
 }
 

@@ -34,11 +34,11 @@ test("decimal numbers to currency", () => {
 
   expect(starkString("-.0").toCurrency().toString()).toBe("-.0");
 
-  expect(starkString("456.4346640").toCurrency().toString()).toBe(
+  expect(starkString("456.4346640").toCurrency(true).toString()).toBe(
     "456.434,664,0",
   );
 
-  expect(starkString("456.4346640").toCurrency(false).toString()).toBe(
+  expect(starkString("456.4346640").toCurrency().toString()).toBe(
     "456.4346640",
   );
 });
