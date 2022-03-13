@@ -164,9 +164,9 @@ class StarkString extends NativeString {
    *   starkString(`12.3456`).paddingDecimal(3); //`12.3`
    *   starkString(`123456`).paddingDecimal(3); //`123456`
    */
-  toDecimalPrecision(allLength: number): string {
+  toDecimalPrecision(allLength: number): StarkString {
     this._value = toDecimalPrecision(this._value, allLength);
-    return this._value;
+    return this;
   }
 
   /** Convert any string to number */
