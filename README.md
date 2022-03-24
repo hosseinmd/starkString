@@ -18,7 +18,7 @@ Include functions of `persian.js`
 `$ yarn add starkstring`
 
 ```js
-const starkString = require("starkstring");
+const starkString = require("starkstring").default;
 
 //or
 
