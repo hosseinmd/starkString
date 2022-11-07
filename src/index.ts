@@ -15,6 +15,7 @@
   toCurrency,
   toFixed,
   floor,
+  scientificNotationToDecimal,
 } from "./core";
 import NativeString from "./NativeString";
 
@@ -130,6 +131,17 @@ class StarkString extends NativeString {
   /** Used for validation back card number */
   isValidBankCard(): boolean {
     return isValidBankCard(this._value);
+  }
+
+  /**
+   * Used to convert scientific notations to decimal
+   *
+   * @example
+   *   starkString(`5.2e-8`).scientificNotationToDecimal(); //`0.000000052`
+   */
+  scientificNotationToDecimal(): string {
+    this._value = scientificNotationToDecimal(this._value);
+    return this._value;
   }
 
   /** Used for convert to price mode */
