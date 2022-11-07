@@ -107,3 +107,31 @@ test("Min number", () => {
     "-1.44",
   );
 });
+
+test("Science Notation to Decimal", () => {
+  expect(starkString("3.2e6").scientificNotationToDecimal().toString()).toBe(
+    "3200000",
+  );
+  expect(starkString("6.3").scientificNotationToDecimal().toString()).toBe(
+    "6.3",
+  );
+  expect(starkString("4.5e-8").scientificNotationToDecimal().toString()).toBe(
+    "0.000000045",
+  );
+  expect(starkString("-2.9e-6").scientificNotationToDecimal().toString()).toBe(
+    "-0.0000029",
+  );
+  expect(starkString("-8.2").scientificNotationToDecimal().toString()).toBe(
+    "-8.2",
+  );
+  expect(starkString("-7.5e6").scientificNotationToDecimal().toString()).toBe(
+    "-7500000",
+  );
+  expect(
+    starkString("Some Text").scientificNotationToDecimal().toString(),
+  ).toBe("Some Text");
+  expect(
+    starkString(8.2e7).scientificNotationToDecimal().toCurrency().toString(),
+  ).toBe("82,000,000");
+  expect(starkString("").scientificNotationToDecimal().toString()).toBe("");
+});
