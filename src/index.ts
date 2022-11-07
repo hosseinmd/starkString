@@ -139,9 +139,9 @@ class StarkString extends NativeString {
    * @example
    *   starkString(`5.2e-8`).scientificNotationToDecimal(); //`0.000000052`
    */
-  scientificNotationToDecimal(): string {
+  scientificNotationToDecimal(): StarkString {
     this._value = scientificNotationToDecimal(this._value);
-    return this._value;
+    return this;
   }
 
   /** Used for convert to price mode */
