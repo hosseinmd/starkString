@@ -1,5 +1,4 @@
 function scientificNotationToDecimal(value: number | string): string {
-  if (value == null) return "";
   const sign = Math.sign(Number(value));
   //if the number is in scientific notation remove it
   if (/\d+\.?\d*e[\+\-]*\d+/i.test(String(value))) {
