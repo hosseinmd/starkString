@@ -118,8 +118,11 @@ test("Science Notation to Decimal", () => {
   expect(starkString("4.5e-8").scientificNotationToDecimal().toString()).toBe(
     "0.000000045",
   );
-  expect(starkString("-2.9e-6").scientificNotationToDecimal().toString()).toBe(
-    "-0.0000029",
+  expect(starkString("-1.7e-12").scientificNotationToDecimal().toString()).toBe(
+    "-0.0000000000017",
+  );
+  expect(starkString(-2.9e-15).scientificNotationToDecimal().toString()).toBe(
+    "-0.0000000000000029",
   );
   expect(starkString("-8.2").scientificNotationToDecimal().toString()).toBe(
     "-8.2",

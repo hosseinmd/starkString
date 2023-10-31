@@ -19,8 +19,8 @@ function scientificNotationToDecimal(value: number | string): string {
     }
   }
 
-  if (sign < 0 && value > 0) {
-    value = -value;
+  if (sign < 0 && Number(value) > 0) {
+    value = `-${value}`;
   }
 
   return String(value);
